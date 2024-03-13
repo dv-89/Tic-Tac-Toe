@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="class_table">
+        <table id="ttt">
+            <tr>
+                <td  onclick="cellClicked(this)">00</td >
+                <td  onclick="cellClicked(this)">01</td >
+                <td  onclick="cellClicked(this)">02</td >
+            </tr>
+            <tr>
+                <td  onclick="cellClicked(this)">10</td >
+                <td  onclick="cellClicked(this)">11</td >
+                <td  onclick="cellClicked(this)">12</td >
+            </tr>
+            <tr>
+                <td  onclick="cellClicked(this)">20</td >
+                <td  onclick="cellClicked(this)">21</td >
+                <td  onclick="cellClicked(this)">22</td >
+            </tr>
+        </table>
+    </div>
+    <div class="class_buttons">
+        <button onClick="resetBoard()">Reset</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

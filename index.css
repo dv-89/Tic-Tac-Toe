@@ -1,0 +1,67 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: white;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* vertically */
+  justify-content: center; /* horizontally */
+}
+
+.class_table {
+  display: table;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.class_table table {
+  /* background-color: aquamarine; */
+  border-collapse: collapse; /*Ensures that borders are collapsed into a single border*/
+  border-color: black;
+  font-size: 26px;
+}
+
+.class_table tr {
+  margin: 5px;
+  padding: 5px;
+}
+
+.class_table td {
+  padding: 30px;
+  margin: 30px;
+  border: 1px solid black;
+  opacity: 0;
+}
+
+.class_buttons {
+  padding-top: 20px;
+}
+
+#ttt {
+  border-collapse: collapse;
+  border: none;
+}
+
+#ttt td {
+  border: 1px solid black;
+}
+
+#ttt tr:first-child td {
+  border-top: none;
+}
+
+#ttt tr:last-child td {
+  border-bottom: none;
+}
+
+#ttt tr td:first-child {
+  border-left: none;
+}
+
+#ttt tr td:last-child {
+  border-right: none;
+}
