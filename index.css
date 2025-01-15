@@ -1,67 +1,52 @@
-html,
 body {
-  height: 100%;
-  margin: 0;
-  background-color: white;
-}
-
-body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom right, #4facfe, #00f2fe);
   display: flex;
   flex-direction: column;
-  align-items: center; /* vertically */
-  justify-content: center; /* horizontally */
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  color: #333;
 }
 
 .class_table {
-  display: table;
-  margin: 0 auto;
-  vertical-align: middle;
-}
-
-.class_table table {
-  /* background-color: aquamarine; */
-  border-collapse: collapse; /*Ensures that borders are collapsed into a single border*/
-  border-color: black;
-  font-size: 26px;
-}
-
-.class_table tr {
-  margin: 5px;
-  padding: 5px;
-}
-
-.class_table td {
-  padding: 30px;
-  margin: 30px;
-  border: 1px solid black;
-  opacity: 0;
-}
-
-.class_buttons {
-  padding-top: 20px;
+  margin-bottom: 20px;
 }
 
 #ttt {
   border-collapse: collapse;
-  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #ttt td {
-  border: 1px solid black;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #333;
+  transition: background-color 0.3s;
 }
 
-#ttt tr:first-child td {
-  border-top: none;
+#ttt td:hover {
+  background-color: #f1f1f1;
 }
 
-#ttt tr:last-child td {
-  border-bottom: none;
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-#ttt tr td:first-child {
-  border-left: none;
-}
-
-#ttt tr td:last-child {
-  border-right: none;
+button:hover {
+  background: #555;
 }

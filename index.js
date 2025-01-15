@@ -1,103 +1,52 @@
+let count = 1;
+let gameState = 0;
 
-var count = 1;
-var gameState = 0;
+function checkIfDone() {
+    const cells = document.querySelectorAll('#ttt td');
+    const lines = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+        [0, 4, 8], [2, 4, 6]             // Diagonals
+    ];
 
-
-function checkIfDone(){
-    var tableById = document.getElementById('ttt');
-    var cells = tableById.getElementsByTagName('td');
-
-    // check if any row is equal 
-    if(cells[0].textContent === cells[1].textContent && cells[1].textContent === cells[2].textContent){
-        return true;
+    for (const line of lines) {
+        const [a, b, c] = line;
+        if (
+            cells[a].textContent &&
+            cells[a].textContent === cells[b].textContent &&
+            cells[a].textContent === cells[c].textContent
+        ) {
+            return true;
+        }
     }
-    if(cells[3].textContent === cells[4].textContent && cells[4].textContent === cells[5].textContent){
-        return true;
-    }
-    if(cells[6].textContent === cells[7].textContent && cells[7].textContent === cells[8].textContent){
-        return true;
-    }
-    // check if any col is equal
-    if(cells[0].textContent === cells[3].textContent && cells[3].textContent === cells[6].textContent){
-        return true;
-    }
-    if(cells[1].textContent === cells[4].textContent && cells[4].textContent === cells[7].textContent){
-        return true;
-    }
-    if(cells[2].textContent === cells[5].textContent && cells[5].textContent === cells[8].textContent){
-        return true;
-    }
-    // check any diagonals are equal
-    if(cells[0].textContent === cells[4].textContent && cells[4].textContent === cells[8].textContent){
-        return true;
-    }
-    if(cells[2].textContent === cells[4].textContent && cells[4].textContent === cells[6].textContent){
-        return true;
-    }
-    // check if it is draw
-
     return false;
-    
 }
 
-function resetBoard(){
+function resetBoard() {
     count = 1;
     gameState = 0;
-    var cells = document.getElementById('ttt').getElementsByTagName('td');
-
-    // Set the content of each cell to its initial value
-    for (var i = 0; i < cells.length; i++) {
-        var row = Math.floor(i / 3);
-        var col = i % 3;
-        cells[i].textContent = row.toString() + col.toString();
-        cells[i].style.opacity = 0;
-    }
-
-    // Log or display a message indicating the game is reset
+    const cells = document.querySelectorAll('#ttt td');
+    cells.forEach(cell => {
+        cell.textContent = '';
+        cell.style.backgroundColor = 'white';
+    });
     console.log('Game has been reset.');
 }
 
-function changeOpacity(cell){
-    cell.style.opacity = 1;
-}
+function cellClicked(cell) {
+    if (gameState === 1 || cell.textContent) return;
 
+    cell.textContent = count % 2 === 0 ? 'X' : 'O';
+    cell.style.backgroundColor = '#f0f8ff';
 
-function cellClicked(cell){
-    
-    if(gameState == 0){
-        if(cell.textContent == 'X' || cell.textContent == 'O'){
-            console.log("Value already placed.")
-            return;
-        }
-    
-        if (count%2 == 0){
-            
-            var newContent = 'X';
-            console.log("Even click and clicked cell " + cell.textContent);
-            cell.textContent = newContent;
-            changeOpacity(cell);
-            
-        }else{
-            
-            var newContent = 'O';
-            console.log("Odd click and clicked cell " + cell.textContent);
-            cell.textContent = newContent;
-            changeOpacity(cell);
-        }
-    
-        let b = checkIfDone();
-        if( Boolean(b) == true ){
-            gameState = 1;
-            console.log("hmm now what");
-            alert("Game won");
-        }
-    } else{
-        console.log("game done");
+    if (checkIfDone()) {
+        gameState = 1;
+        alert(`Player ${count % 2 === 0 ? 'X' : 'O'} wins!`);
         return;
     }
+
     count++;
-    if(count == 10){
-        alert("game is draw");
-        console.log("completed");
+    if (count === 10) {
+        alert("It's a draw!");
     }
 }
